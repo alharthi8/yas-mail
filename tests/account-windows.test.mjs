@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {normalizeWindowView,mergeVisibleTabOrder,detachedView} from '../ui/account-windows.js';
+test('transferred views allow only known pages/folders and valid dates',()=>{assert.deepEqual(normalizeWindowView({page:'bad',folder:'bad',month:'not-a-date'}),{});assert.equal(normalizeWindowView({page:'contacts',folder:'sent',month:'2026-11-01T00:00:00Z'}).month.toISOString(),'2026-11-01T00:00:00.000Z')});
+test('reordering one window preserves hidden account slots',()=>{assert.deepEqual(mergeVisibleTabOrder(['a','b','c','d'],['d','b']),['a','d','c','b']);assert.deepEqual(mergeVisibleTabOrder(['a'],['b','c']),['a','b','c']);assert.deepEqual(mergeVisibleTabOrder(['a','a','b'],['b','a']),['b','a'])});
+test('detaching transfers view metadata and appearance, not mailbox contents',()=>{const view=detachedView({account:'a',page:'mail',folder:'sent',messages:[{body:'private text'}],month:new Date('2026-11-01')},'a',new Map(),{a:{color:'#2563eb'}});assert.equal(view.folder,'sent');assert.equal(view.appearance.color,'#2563eb');assert.equal('messages' in view,false)});
+test('inactive account uses its own saved view',()=>{const view=detachedView({account:'a',folder:'trash'},'b',new Map([['b',{page:'contacts',query:'Maya'}]]),{});assert.equal(view.page,'contacts');assert.equal(view.query,'Maya');assert.equal(view.folder,'inbox')});
+test('an explicitly closed reading pane clears a stale destination selection',()=>{assert.deepEqual(normalizeWindowView({selected:null}),{selected:null})});

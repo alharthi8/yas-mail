@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444 128" role="img" aria-label="Yas Mail"><title>Yas Mail</title><rect width="128" height="128" rx="30" fill="#2563EB"/>
+  <path d="M18 52C29 58 40 65 48 75L32 98C23 84 19 68 18 52Z" fill="#9BC8FF"/>
+  <path d="M23 26C44 32 62 42 76 57L58 69C40 58 28 43 23 26Z" fill="#FFFFFF"/>
+  <path d="M35 43H101C106 43 109 47 109 52V86C109 91 105 95 100 95H36C31 95 27 91 27 86V52C27 47 30 43 35 43Z" fill="#FFFFFF"/>
+  <path d="M36 53L63 75C66 77 70 77 73 75L100 53" fill="none" stroke="#2563EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="155" y="87" fill="#192C49" font-family="Dubai, Segoe UI, sans-serif" font-size="76" font-weight="700">Yas Mail</text></svg>
