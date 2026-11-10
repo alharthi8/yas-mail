@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {insertionIndex,insertTransferredAccount} from '../ui/tab-transfer.js';
+test('drop positions choose gaps using visible tab centers',()=>{const rects=[{left:50,right:250},{left:255,right:455}];assert.equal(insertionIndex(rects,40),0);assert.equal(insertionIndex(rects,260),1);assert.equal(insertionIndex(rects,480),2);assert.equal(insertionIndex([],90),0)});
+test('off-screen tab positions count correctly for a scrolled strip',()=>{assert.equal(insertionIndex([{left:-150,right:50},{left:55,right:255},{left:260,right:460}],70),1)});
+test('incoming account is inserted without duplication or object mutation',()=>{const accounts=[{id:'a'},{id:'b'},{id:'c'}];const moved=insertTransferredAccount(accounts,'c',1);assert.deepEqual(moved.map(a=>a.id),['a','c','b']);assert.equal(moved[1],accounts[2]);assert.deepEqual(accounts.map(a=>a.id),['a','b','c']);assert.deepEqual(insertTransferredAccount(accounts,'missing',0),accounts)});
+test('destination insertion clamps outside positions',()=>{const accounts=[{id:'a'},{id:'b'}];assert.deepEqual(insertTransferredAccount(accounts,'b',-5).map(a=>a.id),['b','a']);assert.deepEqual(insertTransferredAccount(accounts,'a',99).map(a=>a.id),['b','a'])});

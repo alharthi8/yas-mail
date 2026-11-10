@@ -1,0 +1,7 @@
+{
+  "name": "yas-mail-macos-build",
+  "private": true,
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.4"
+  }
+}
