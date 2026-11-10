@@ -1,20 +1,40 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Yas Mail",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "identifier": "com.goodmail.desktop",
-  "build": { "frontendDist": "../ui" },
+  "build": {
+    "frontendDist": "../ui"
+  },
   "app": {
-    "windows": [{ "label": "main", "title": "Yas Mail", "width": 1380, "height": 900, "minWidth": 1000, "minHeight": 650, "decorations": false, "resizable": true, "shadow": true }],
+    "windows": [
+      {
+        "label": "main",
+        "title": "Yas Mail",
+        "width": 1380,
+        "height": 900,
+        "minWidth": 1000,
+        "minHeight": 650,
+        "decorations": false,
+        "resizable": true,
+        "shadow": true
+      }
+    ],
     "withGlobalTauri": true,
-    "security": { "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src ipc: http://ipc.localhost; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'" }
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src ipc: http://ipc.localhost; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'"
+    }
   },
   "bundle": {
     "active": true,
     "publisher": "Yas Mail",
     "shortDescription": "Yas Mail for Windows",
-    "targets": ["nsis"],
-    "icon": ["icons/icon.ico"],
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/icon.ico"
+    ],
     "windows": {
       "nsis": {
         "installMode": "currentUser",

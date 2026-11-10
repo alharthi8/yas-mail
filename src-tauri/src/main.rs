@@ -16,6 +16,7 @@ mod manual_mail;
 mod oauth_setup;
 mod publisher_oauth;
 mod windows;
+mod ota;
 type Result<T> = std::result::Result<T, String>;
 fn err(e: impl std::fmt::Display) -> String {
     e.to_string()
@@ -1343,9 +1344,13 @@ async fn contacts_export(content: String, format: String) -> Result<bool> {
         Ok(false)
     }
 }
+#[tauri::command]
+fn check_app_update(){ota::check(true);}
 fn main() {
+    if ota::diagnostic(){return;}
     tauri::Builder::default()
         .setup(|app| {
+            ota::check(false);
             let dir = app.path().app_data_dir()?;
             std::fs::create_dir_all(&dir)?;
             app.manage(Arc::new(cloud::CloudState::new(dir.clone())?));
@@ -1385,6 +1390,7 @@ fn main() {
             }
         })
         .invoke_handler(tauri::generate_handler![
+            check_app_update,
             publisher_oauth::oauth_providers,
             cancel_sign_in,
             cloud::cloud_connections,

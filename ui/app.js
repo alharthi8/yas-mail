@@ -131,6 +131,7 @@ function eventForm(e={}){const start=e.start||new Date(Date.now()+3600000).toISO
 function ruleForm(sender=''){modal('Block sender with a provider rule',`<div class="notice">Future messages from this exact address will go to trash at your provider, even when Yas Mail is closed. This creates a mail rule; it does not edit the provider’s native blocked-sender list. Existing mail stays unchanged. Remove this rule later under Sender rules.</div>${field('Sender email address','rule-sender',sender,'email')}<div class="modal-footer">${button('Cancel','close')}${button('Create provider rule','save-rule','primary')}</div>`)}
 async function modalTask(fn){const buttons=[...$('#modal').querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);$('#modal-error').textContent='';try{await fn()}catch(e){if($('#modal-error'))$('#modal-error').textContent=String(e);else fail(e)}finally{buttons.forEach(b=>b.disabled=b.dataset.finished==='yes')}}
 async function action(a,el){
+ if(a==='check-app-update'){await invoke('check_app_update');return;}
  if(a==='manual-open')return manualAccounts.open();
  if(a==='manual-edit'){const account=S.accounts.find(account=>account.id===el.dataset.id);if(account?.manual)return manualAccounts.open(account);return}
  if(a.startsWith('manual-'))return manualAccounts.action(a);
