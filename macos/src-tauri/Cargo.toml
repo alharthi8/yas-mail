@@ -39,7 +39,6 @@ hmac = "0.12"
 fs2 = "0.4"
 chrono-tz = "0.10"
 tauri-plugin-notification = "2"
-tauri-plugin-updater = "2"
 rfd = "0.15"
 
 [target.'cfg(windows)'.dependencies]

@@ -1213,7 +1213,6 @@ fn main() {
     if ota::diagnostic(){return;}
     tauri::Builder::default()
         .plugin(tauri_plugin_notification::init())
-        .plugin(tauri_plugin_updater::Builder::new().build())
         .setup(|app| {
             let smoke=std::env::args().any(|a|a=="--yas-smoke-test");
             if !smoke { ota::check(false); }
@@ -1303,7 +1302,7 @@ fn main() {
             desktop::exchange_discover, desktop::exchange_test, desktop::exchange_connect,
             desktop::mail_draft_get, desktop::save_text_file, desktop::open_external,
             desktop::attachment_preview, desktop::attachment_save_all, desktop::mail_remote_images,
-            release::release_status, release::check_for_updates, release::install_update,
+            release::release_status, release::check_for_updates,
             ai::ai_assist, ai::ai_runtime_status,
             mail_workspace::workspace_mail_list, mail_workspace::workspace_sync, mail_workspace::workspace_settings,
             mail_workspace::workspace_preferences_get, mail_workspace::workspace_preferences_save,

@@ -3,8 +3,6 @@ fn main() {
         "YAS_MAIL_GOOGLE_CLIENT_ID",
         "YAS_MAIL_GOOGLE_CLIENT_SECRET",
         "YAS_MAIL_MICROSOFT_CLIENT_ID",
-        "YAS_MAIL_UPDATE_MANIFEST_URL",
-        "YAS_MAIL_UPDATE_PUBLIC_KEY",
     ] {
         println!("cargo:rerun-if-env-changed={name}");
     }
