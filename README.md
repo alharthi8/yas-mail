@@ -1,5 +1,7 @@
 # Yas Mail
 
+**macOS Apple Silicon preview:** [Yas Mail 0.3.2](https://github.com/alharthi8/yas-mail/releases/tag/macos-v0.3.2). Experimental, ad-hoc signed, not Apple notarized. The Mac port has its own [source/build guide](macos/README.md) and [limitations](macos/RELEASE-NOTES.md). The rest of this document describes the Windows version.
+
 **Mail, made clear.**
 
 A Windows email client built with Rust, Tauri 2, and a lightweight local web interface. Version 0.3.1 adds manual IMAP, POP3, and SMTP account settings alongside Google, Outlook, and Microsoft 365 / Exchange Online sign-in. Subtle interface animations respect reduced-motion preferences. Yas Mail's publisher configures the Google and Microsoft application identities once for the build; users do not register apps or enter client IDs.
@@ -85,4 +87,4 @@ Compatibility: the internal app identifier, credential-service namespace, and lo
 
 ## Signed in-app updates
 
-Install this updater-enabled preview once. Both the startup check and Settings → Check for app updates use GitHub Releases. Approve the update, then fully quit and reopen when convenient. Downloads are verified with the embedded public key before replacing the app executable. The active session and user-data folders are left intact. See [UPDATES.md](UPDATES.md) for release/key management and full-installer limitations. Windows Authenticode publisher signing and macOS updates are not configured.
+Install this updater-enabled preview once. Both the startup check and Settings → Check for app updates use GitHub Releases. Approve the update, then fully quit and reopen when convenient. Downloads are verified with the embedded public key before replacing the app executable. The active session and user-data folders are left intact. See [UPDATES.md](UPDATES.md) for release/key management and full-installer limitations. Windows Authenticode publisher signing is not configured. The separate macOS preview uses signed whole-bundle updates; see [the macOS release notes](macos/RELEASE-NOTES.md).
