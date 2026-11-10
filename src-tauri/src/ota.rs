@@ -3,7 +3,7 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::time::Duration;
 static BUSY: AtomicBool = AtomicBool::new(false);
 static UPDATED: AtomicBool = AtomicBool::new(false);
-const KEY: [u8;32] = *include_bytes!("../../../release.pub");
+const KEY: [u8;32] = *include_bytes!("../../release.pub");
 const CURRENT: &str = env!("CARGO_PKG_VERSION");
 fn show(message: &str) { rfd::MessageDialog::new().set_title("Yas Mail updates").set_description(message).show(); }
 fn builder() -> self_update::backends::github::UpdateBuilder {

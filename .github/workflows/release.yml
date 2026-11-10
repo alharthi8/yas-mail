@@ -29,10 +29,11 @@ jobs:
       - name: Test and build mail
         shell: pwsh
         run: |
-          cargo test --locked --manifest-path src-tauri/Cargo.toml
+          cargo test --release --locked --manifest-path src-tauri/Cargo.toml
+          if ($LASTEXITCODE -ne 0) { throw 'Mail tests failed' }
           npx --yes @tauri-apps/cli@2 build --bundles nsis
       - name: Install pinned signing tool
-        run: cargo install zipsign --version 0.2.2 --locked
+        run: cargo install zipsign --version 0.2.2 --locked --debug
       - name: Sign and verify update; stage release
         shell: pwsh
         env:
