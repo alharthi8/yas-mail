@@ -25,6 +25,7 @@ jobs:
         run: |
           $version = (Select-String -Path 'src-tauri/Cargo.toml' -Pattern '^version = "([^"]+)"' | Select-Object -First 1).Matches.Groups[1].Value
           if ($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -ne "v$version") { throw 'Tag must match Cargo version' }
+          "YAS_RELEASE_VERSION=$version" >> $env:GITHUB_ENV
       - name: Test and build mail
         shell: pwsh
         run: |
