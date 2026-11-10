@@ -2,11 +2,11 @@
 
 **Mail, made clear.**
 
-A Windows email client built with Rust, Tauri 2, and a lightweight local web interface. Version 0.3.0 adds manual IMAP, POP3, and SMTP account settings alongside Google, Outlook, and Microsoft 365 / Exchange Online sign-in. Subtle interface animations respect reduced-motion preferences. Yas Mail's publisher configures the Google and Microsoft application identities once for the build; users do not register apps or enter client IDs.
+A Windows email client built with Rust, Tauri 2, and a lightweight local web interface. Version 0.3.1 adds manual IMAP, POP3, and SMTP account settings alongside Google, Outlook, and Microsoft 365 / Exchange Online sign-in. Subtle interface animations respect reduced-motion preferences. Yas Mail's publisher configures the Google and Microsoft application identities once for the build; users do not register apps or enter client IDs.
 
 ## Open the app
 
-Run `Yas-Mail-Setup.exe` to install for your Windows user, then open **Yas Mail** from Start. The installer creates the Start menu shortcut and repairs it on updates if it is missing. No administrator access is required. For a portable launch, run `Yas-Mail-0.3.0.exe` from the delivery folder; the portable app does not add a Start menu entry.
+Run `Yas-Mail-Setup.exe` to install for your Windows user, then open **Yas Mail** from Start. The installer creates the Start menu shortcut and repairs it on updates if it is missing. No administrator access is required. For a portable launch, run `Yas-Mail-0.3.1.exe` from the delivery folder; the portable app does not add a Start menu entry.
 
 Close an older running Yas Mail window before launching the updated version. Both installed and portable builds use the Windows GUI subsystem, including this debug preview, so launching the app does not open a command window. The app opens a clearly labeled demo workspace until you connect an account. No demo action sends real email.
 
@@ -82,3 +82,7 @@ Cloud sign-in happens in your browser, with credentials managed by the native Wi
 Sending is not retried automatically, avoiding accidental duplicate messages after an ambiguous network failure. “Accepted” means the provider accepted the send request, not that delivery is guaranteed.
 
 Compatibility: the internal app identifier, credential-service namespace, and local storage keys retain their legacy values so the rename preserves connected accounts, saved signatures, avatars, colors, and preferences. All visible branding is Yas Mail.
+
+## Signed in-app updates
+
+Install this updater-enabled preview once. Both the startup check and Settings → Check for app updates use GitHub Releases. Approve the update, then fully quit and reopen when convenient. Downloads are verified with the embedded public key before replacing the app executable. The active session and user-data folders are left intact. See [UPDATES.md](UPDATES.md) for release/key management and full-installer limitations. Windows Authenticode publisher signing and macOS updates are not configured.
